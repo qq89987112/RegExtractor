@@ -1,0 +1,25 @@
+{
+  "name": "regextractor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qq89987112/RegExtractor.git"
+  },
+  "keywords": [
+    "Reg"
+  ],
+  "author": "蔡荣庚",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qq89987112/RegExtractor/issues"
+  },
+  "homepage": "https://github.com/qq89987112/RegExtractor#readme",
+  "dependencies": {
+    // "filesys": "^1.0.0"
+  }
+}
