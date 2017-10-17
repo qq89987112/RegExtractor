@@ -1,6 +1,6 @@
 {
   "name": "regextractor",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,5 @@
   },
   "homepage": "https://github.com/qq89987112/RegExtractor#readme",
   "dependencies": {
-    // "filesys": "^1.0.0"
   }
 }

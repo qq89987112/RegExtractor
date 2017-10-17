@@ -102,5 +102,4 @@ class RegExtract {
 }
 
 
-
 module.exports = RegExtract;
