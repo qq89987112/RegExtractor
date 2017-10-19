@@ -60,7 +60,7 @@ function extract(content, options) {
                             break;
                         case type === "[object Function]":
                             subRet = value(result);
-                            values.push(subRet);
+                            subRet && values.push(subRet);
                             while (result = reg.exec(content)) {
                                 subRet = value(result);
                                 subRet && values.push(subRet);

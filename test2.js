@@ -30,6 +30,7 @@ function main() {
         }
     });
     //请在这里下断点
-    console.log(result);
+    // console.log(result);
+    console.log(JSON.stringify(result));
 
 }

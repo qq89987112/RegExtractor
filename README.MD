@@ -216,10 +216,28 @@
 	}
 
 ##### 结果
-	{ apis:
-	   [ { method: ' GET',
-	       url: ' ` /product/list?id={id}&page={page}&rows={rows} `',
-	       params: [Array] },
-	     { method: ' GET',
-	       url: ' ` /product/category `',
-	       params: [Array] } ] }
+	{
+	    "apis":[
+	        {
+	            "method":" GET",
+	            "url":" ` /product/list?id={id}&page={page}&rows={rows} `",
+	            "params":[
+	                {
+	                    "param":"id ",
+	                    "must":false
+	                },
+	                {
+	                    "param":"query ",
+	                    "must":false
+	                }
+	            ]
+	        },
+	        {
+	            "method":" GET",
+	            "url":" ` /product/category `",
+	            "params":[
+
+	            ]
+	        }
+	    ]
+	}
