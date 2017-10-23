@@ -9,10 +9,10 @@ function toString(obj) {
  *  {}向里头递归,碰到字符串、函数则停止
  *  要记得只有数组才有意义，嵌套的对象不需要被处理(嵌套对象可以处理成顶级对象)，所以可以用来做 向里递归 的标志。
  * @param content
- * @param options
+ * @param regMapObj
  * @returns {{}}
  */
-function extract(content, options) {
+function extract(content, regMapObj,options) {
     var regExp = /\/(.+)\/([^\|]+)?(?:\|(.+))?/;
     var
         key,
@@ -26,14 +26,39 @@ function extract(content, options) {
         flags,
         name;
 
-    for (key in options) {
+    function error(msg) {
+      let _error = options.error;
+      console.log("error");
+      if(_error instanceof Function){
+        _error(msg);
+      }
+    }
+
+    if(typeof regMapObj ==="string"){
+      try{
+        regMapObj = JSON.parse(regMapObj);
+        if(typeof regMapObj === "number"){
+          error("正则对象有问题");
+          return;
+        }
+      }catch(e){
+        error(e.message);
+        return;
+      }
+    }
+
+    for (key in regMapObj) {
         result = regExp.exec(key);
+        if(!result){
+          error("没有匹配结果");
+          return;
+        }
         regStr = result[1];
         flags = result[2];
         name = result[3];
         if (regStr) {
             reg = new RegExp(regStr, flags);
-            value = options[key];
+            value = regMapObj[key];
             type = toString(value);
             result = reg.exec(content);
 
@@ -97,9 +122,25 @@ class RegExtract {
     }
 
     extract(options) {
-        return extract(this._content, options);
+        var that = this;
+        return extract(this._content, options,{
+          error:function (msg) {
+            that._error = msg;
+          }
+        });
+    }
+
+    setContent(content){
+      this._content = content;
+    }
+
+    getError(){
+      return this._error || "";
     }
 }
 
-
-module.exports = RegExtract;
+try{
+  module.exports = RegExtract;
+}catch (e){
+}
+export default RegExtract;
