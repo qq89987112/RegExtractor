@@ -27,6 +27,7 @@ function extract(content, options) {
         name;
 
     for (key in options) {
+    	if(!options.hasOwnProperty(key)) return;
         result = regExp.exec(key);
         regStr = result[1];
         flags = result[2];
@@ -38,10 +39,10 @@ function extract(content, options) {
             result = reg.exec(content);
 
             switch (true) {
-                case flags && flags.indexOf("g") !== -1:
+                case flags && ~flags.indexOf("g"):
                     let values = [];
-                    switch (true) {
-                        case type === "[object String]":
+                    switch (type) {
+                        case "[object String]":
                             name = value;
                             if (result && result.length > 1) {
                                 values.push(result[1]);
@@ -50,7 +51,7 @@ function extract(content, options) {
                                 }
                             }
                             break;
-                        case type === "[object Object]":
+                        case "[object Object]":
                             subRet = extract(result[1], value);
                             values.push(subRet);
                             while (result = reg.exec(content)) {
@@ -58,7 +59,7 @@ function extract(content, options) {
                                 values.push(subRet);
                             }
                             break;
-                        case type === "[object Function]":
+                        case "[object Function]":
                             subRet = value(result);
                             subRet && values.push(subRet);
                             while (result = reg.exec(content)) {
