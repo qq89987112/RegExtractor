@@ -48,7 +48,8 @@ function extract(content, regMapObj,options) {
     }
 
     for (key in regMapObj) {
-        result = regExp.exec(key);
+      if(!regMapObj.hasOwnProperty(key)) return;
+      result = regExp.exec(key);
         if(!result){
           error("没有匹配结果");
           return;
