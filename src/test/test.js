@@ -1,4 +1,4 @@
-let RegExtract = require("./index.js");
+let RegExtract = require("../js/reg-extractor");
 
 test();
 

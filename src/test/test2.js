@@ -1,5 +1,5 @@
 let
-    RegExtract = require("./index.js"),
+    RegExtract = require("../js/reg-extractor"),
     filesystem = require("filesys"),
     path = require("path");
 
